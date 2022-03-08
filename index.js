@@ -1,12 +1,12 @@
-var numberOfDrumButtons = document.querySelectorAll(".drum").length;
+const numberOfDrumButtons = document.querySelectorAll(".drum").length;
 
-for(var i = 0; i<numberOfDrumButtons; i++){
+for(let i = 0; i<numberOfDrumButtons; i++){
 
-document.querySelectorAll(".drum")[i].addEventListener("click",function (){
+document.querySelectorAll(".drum")[i].addEventListener("click", event =>{
 
 
      
-    var buttonInnerHtml = this.innerHTML;
+    let buttonInnerHtml = this.innerHTML;
 
     makeSound(buttonInnerHtml);
     
@@ -14,13 +14,13 @@ document.querySelectorAll(".drum")[i].addEventListener("click",function (){
 });
 }
 
-document.addEventListener("keypress",function(event){
+document.addEventListener("keypress",(event)=>{
 
     makeSound(event.key);
     buttonAnimation(event.key);
 });
 
-function makeSound(key){
+const makeSound = key =>{
     switch(key){
         case "w":
             var audio = new Audio("sounds/crash.mp3");
@@ -62,13 +62,13 @@ function makeSound(key){
 
 }
 
-function buttonAnimation(currentKey){
+const buttonAnimation = currentKey => {
 
-    var activeButton = document.querySelector("." + currentKey);
+    const activeButton = document.querySelector("." + currentKey);
 
     activeButton.classList.add("pressed");
 
-    setTimeout(function(){
+    setTimeout(()=>{
         activeButton.classList.remove("pressed");
     },100);
 
